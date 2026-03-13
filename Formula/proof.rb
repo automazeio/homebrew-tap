@@ -1,42 +1,37 @@
 # Homebrew formula for proof
+# Repository: automazeio/homebrew-tap
 # Install: brew install automazeio/tap/proof
 #
-# sha256 values are placeholders until the first binary release.
-# The proof release workflow will PR this file with updated
-# version and sha256 values on each release.
+# Downloads the install script and runs it non-interactively.
+# The script handles platform detection and downloads the correct binary.
+# After install, we move the binary into Homebrew's bin for proper
+# `brew uninstall` support.
 
 class Proof < Formula
   desc "Capture visual evidence of test execution"
   homepage "https://github.com/automazeio/proof"
-  version "0.20260312.1"
+  url "https://raw.githubusercontent.com/automazeio/proof/main/install/install.sh"
+  version "0.20260313.0"
+  sha256 "PLACEHOLDER"
   license "Apache-2.0"
 
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/automazeio/proof/releases/download/v#{version}/proof-darwin-arm64"
-      sha256 "PLACEHOLDER"
-    else
-      url "https://github.com/automazeio/proof/releases/download/v#{version}/proof-darwin-x64"
-      sha256 "PLACEHOLDER"
-    end
-  end
-
-  on_linux do
-    if Hardware::CPU.arm?
-      url "https://github.com/automazeio/proof/releases/download/v#{version}/proof-linux-arm64"
-      sha256 "PLACEHOLDER"
-    else
-      url "https://github.com/automazeio/proof/releases/download/v#{version}/proof-linux-x64"
-      sha256 "PLACEHOLDER"
-    end
-  end
-
   def install
-    binary_name = stable.url.split("/").last
-    bin.install binary_name => "proof"
+    mv "install.sh", "install.sh" unless File.exist?("install.sh")
+
+    system "sh", "install.sh"
+
+    # Move binary from installer location into Homebrew's bin
+    local_bin = Pathname.new(Dir.home) / ".local" / "bin"
+    system_bin = Pathname.new("/usr/local/bin")
+
+    if (local_bin / "proof").exist?
+      bin.install local_bin / "proof"
+    elsif (system_bin / "proof").exist?
+      bin.install system_bin / "proof"
+    end
   end
 
   test do
-    assert_match "proof", shell_output("#{bin}/proof --help 2>&1", 0)
+    assert_match "proof", shell_output("#{bin}/proof --help 2>&1")
   end
 end
