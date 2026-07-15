@@ -9,3 +9,4 @@ brew tap automazeio/tap
 | Formula | Description | Install |
 |---------|-------------|---------|
 | [proof](./Formula/proof.rb) | Capture visual evidence of test execution | `brew install automazeio/tap/proof` |
+| [envapor](./Formula/envapor.rb) | Commit your secrets, securely | `brew install automazeio/tap/envapor` |
