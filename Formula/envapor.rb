@@ -19,7 +19,7 @@ class Envapor < Formula
   url "https://raw.githubusercontent.com/automazeio/envapor/main/installers/install.sh"
   version "0.0.0"
   sha256 "684f2e5692b22510ca959141506db7eef4c32b2864da3926aa5e84705939a68d"
-  license "MIT"
+  license "Apache-2.0"
 
   def install
     # Pin the download to this formula's version and direct the installer to
