@@ -11,8 +11,8 @@ class Proof < Formula
   desc "Capture visual evidence of test execution"
   homepage "https://github.com/automazeio/proof"
   url "https://raw.githubusercontent.com/automazeio/proof/main/install/install.sh"
-  version "0.20260313.0"
-  sha256 "eb6d5dbd69fbc2d1b7a3a488ff2b9ad3d1b93c50335894da23fec8044e469538"
+  version "0.20260715.0"
+  sha256 "b626666d4b4cb22b088dd1786561e57a5b95b94830ee1b27c96287269656edcf"
   license "Apache-2.0"
 
   def install
