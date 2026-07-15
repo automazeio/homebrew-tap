@@ -17,8 +17,8 @@ class Envapor < Formula
   desc "Commit your secrets, securely"
   homepage "https://github.com/automazeio/envapor"
   url "https://raw.githubusercontent.com/automazeio/envapor/main/installers/install.sh"
-  version "0.0.0"
-  sha256 "684f2e5692b22510ca959141506db7eef4c32b2864da3926aa5e84705939a68d"
+  version "0.0.1"
+  sha256 "a23b7057969dda4c59c751faeb71ae7490a823ca3b1c839357f3e79bc1c3cc64"
   license "Apache-2.0"
 
   def install
